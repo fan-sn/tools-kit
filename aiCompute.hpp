@@ -10,6 +10,7 @@
 #include <cmath>
 #include <cassert>
 #include <iostream>
+#include <iomanip>
 
 // 智能化工具集（aiCompute）
 class aiCompute {
@@ -388,4 +389,20 @@ public:
     }
 };
 
+double sphere(const std::vector<double>& x) {
+    double sum = 0;
+    for (auto v : x) sum += v * v;
+    return sum;
+}
+
+// 示例TSP距离矩阵
+std::vector<std::vector<double>> sampleTSP() {
+    // 4个城市的距离矩阵，自己可扩展
+    return {
+        {0, 1, 2, 3},
+        {1, 0, 4, 2},
+        {2, 4, 0, 1},
+        {3, 2, 1, 0}
+    };
+}
 #endif // aiCompute_H
