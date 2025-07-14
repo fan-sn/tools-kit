@@ -1,0 +1,22 @@
+name: Auto Commit GPT Code
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'gpt-generated/**'
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set Git config
+        run: |
+          git config --global user.name 'gpt-bot'
+          git config --global user.email 'gpt-bot@example.com'
+      - name: Commit and Push
+        run: |
+          git add gpt-generated/*
+          git commit -m "feat: 自动提交由GPT生成的代码" || echo "Nothing to commit"
+          git push
